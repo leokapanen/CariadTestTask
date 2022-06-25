@@ -39,7 +39,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideIoDispatcher() = Dispatchers.IO
+    fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
 
     @BaseApiUrl
     @Provides

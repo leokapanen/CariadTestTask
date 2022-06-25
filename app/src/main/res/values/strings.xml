@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CariadTestTask</string>
+    <string name="title_map">Map</string>
+    <string name="title_filtering">Filtering</string>
 </resources>

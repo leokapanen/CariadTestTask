@@ -1,8 +1,6 @@
 package com.kapanen.cariadtesttask.delegate
 
 import androidx.recyclerview.widget.RecyclerView
-import com.kapanen.hearthstoneassessment.delegate.DefaultDelegatesManager
-import com.kapanen.hearthstoneassessment.delegate.RecyclerViewAdapterDelegate
 
 interface AdapterDelegatesManager {
 

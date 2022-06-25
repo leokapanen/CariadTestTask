@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_map">
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="com.kapanen.cariadtesttask.ui.map.MapFragment"
+        android:label="@string/title_map"
+        tools:layout="@layout/fragment_map">
+
+        <action
+            android:id="@+id/action_navigation_map_to_navigation_filtering"
+            app:destination="@id/navigation_filtering" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_filtering"
+        android:name="com.kapanen.cariadtesttask.ui.filtering.FilteringFragment"
+        android:label="@string/title_filtering"
+        tools:layout="@layout/fragment_filtering" />
+
+</navigation>
