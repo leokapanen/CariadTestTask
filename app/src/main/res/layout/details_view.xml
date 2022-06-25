@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/details_card_padding"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/details_title_horizontal_spacing"
+        android:layout_marginEnd="@dimen/details_title_horizontal_spacing"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textColor="@color/details_text"
+        android:textSize="@dimen/details_title_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tesco Extra-North Shields" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/details_inactive_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_inactive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/details_label_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="details_connection_types_label,details_connection_types_label,details_charging_points_label" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_connection_types_label"
+        style="@style/DetailsItemLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:singleLine="true"
+        android:text="@string/details_connection_type_label"
+        app:layout_constraintBottom_toBottomOf="@id/details_connection_types_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/details_connection_types_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_connection_types_value"
+        style="@style/DetailsItemValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/details_text_value_horizontal_spacing"
+        android:layout_marginTop="@dimen/details_text_vertical_spacing"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/details_label_barrier"
+        app:layout_constraintTop_toBottomOf="@id/details_title"
+        tools:text="Type 2 (Socket Only)" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_address_label"
+        style="@style/DetailsItemLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:singleLine="true"
+        android:text="@string/details_connection_address_label"
+        app:layout_constraintBottom_toBottomOf="@id/details_address_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/details_address_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_address_value"
+        style="@style/DetailsItemValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/details_text_value_horizontal_spacing"
+        android:layout_marginTop="@dimen/details_text_vertical_spacing"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/details_label_barrier"
+        app:layout_constraintTop_toBottomOf="@id/details_connection_types_value"
+        tools:text="Norham Road, Chirton, North Shields, England, NE29 7UJ, United Kingdom" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_charging_points_label"
+        style="@style/DetailsItemLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:lines="2"
+        android:text="@string/details_charging_points_label"
+        app:layout_constraintBottom_toBottomOf="@id/details_charging_points_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/details_charging_points_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_charging_points_value"
+        style="@style/DetailsItemValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/details_text_value_horizontal_spacing"
+        android:layout_marginTop="@dimen/details_text_vertical_spacing"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/details_label_barrier"
+        app:layout_constraintTop_toBottomOf="@id/details_address_value"
+        tools:text="4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,4 +2,11 @@
     <string name="app_name">CariadTestTask</string>
     <string name="title_map">Map</string>
     <string name="title_filtering">Filtering</string>
+
+    <string name="fab_filtering_content_description">Filtering button</string>
+
+    <string name="details_connection_type_label">Connection type</string>
+    <string name="details_connection_address_label">Address</string>
+    <string name="details_charging_points_label">Number of\ncharging points</string>
+    <string name="details_item_unknown">-</string>
 </resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DetailsText">
+        <item name="android:textSize">@dimen/details_text_text_size</item>
+        <item name="android:textColor">@color/details_text</item>
+        <item name="android:maxLines">4</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="DetailsItemLabel" parent="DetailsText">
+        <item name="android:lines">1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DetailsItemValue" parent="DetailsText">
+        <item name="android:textStyle">normal</item>
+    </style>
+</resources>
