@@ -11,4 +11,6 @@
     <dimen name="details_card_padding">16dp</dimen>
     <dimen name="details_card_horizontal_margin">16dp</dimen>
     <dimen name="details_card_corner_radius">10dp</dimen>
+
+    <dimen name="filtering_item_horizontal_padding">16dp</dimen>
 </resources>

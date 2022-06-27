@@ -2,14 +2,18 @@ package com.kapanen.cariadtesttask.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.kapanen.cariadtesttask.BuildConfig
 import com.kapanen.cariadtesttask.delegate.AdapterDelegatesManager
 import com.kapanen.cariadtesttask.delegate.DefaultDelegatesManager
+import com.kapanen.cariadtesttask.delegate.RecyclerViewAdapterDelegate
 import com.kapanen.cariadtesttask.setting.AppSettings
 import com.kapanen.cariadtesttask.setting.SharedPreferencesStorage
 import com.kapanen.cariadtesttask.setting.Storage
+import com.kapanen.cariadtesttask.ui.filtering.delegate.FilteringHeaderDelegate
+import com.kapanen.cariadtesttask.ui.filtering.delegate.FilteringItemDelegate
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -114,7 +118,15 @@ object DelegatesModule {
         ioDispatcher: CoroutineDispatcher,
         appSettings: AppSettings
     ): AdapterDelegatesManager {
-        return DefaultDelegatesManager()
+        return DefaultDelegatesManager().apply {
+            addDelegate(
+                FilteringItemDelegate(
+                    appSettings,
+                    ioDispatcher
+                ) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>
+            )
+            addDelegate(FilteringHeaderDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+        }
     }
 
 }

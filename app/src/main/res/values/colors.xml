@@ -12,4 +12,6 @@
 
     <color name="details_text">#FF003865</color>
     <color name="inactive_icon">#FF0000</color>
+
+    <color name="list_bg">#FFD1D2D5</color>
 </resources>

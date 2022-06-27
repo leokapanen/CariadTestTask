@@ -9,4 +9,9 @@
     <string name="details_connection_address_label">Address</string>
     <string name="details_charging_points_label">Number of\ncharging points</string>
     <string name="details_item_unknown">-</string>
+
+    <string name="filter_header_connection_type">Connection Type</string>
+    <string name="filter_header_active">Availability</string>
+    <string name="filter_active">Show active POIs</string>
+    <string name="filter_inactive">Show inactive POIs</string>
 </resources>
