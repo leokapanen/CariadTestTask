@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.kapanen.cariadtesttask.databinding.FragmentMapBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,6 +25,10 @@ class MapFragment : Fragment() {
     ): View {
         mapViewModel = ViewModelProvider(this)[MapViewModel::class.java]
         _binding = FragmentMapBinding.inflate(inflater, container, false)
+
+        binding.fabFilterButton.setOnClickListener {
+            findNavController().navigate(MapFragmentDirections.actionNavigationMapToNavigationFiltering())
+        }
 
         return binding.root
     }
