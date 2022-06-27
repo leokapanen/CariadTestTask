@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/details_card_padding"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/details_card_padding">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/details_title"
@@ -17,8 +17,8 @@
         android:maxLines="2"
         android:textColor="@color/details_text"
         android:textSize="@dimen/details_title_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/details_inactive_icon"
+        app:layout_constraintStart_toEndOf="@id/details_close_button"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Tesco Extra-North Shields" />
 
@@ -28,6 +28,14 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_inactive"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/details_close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
