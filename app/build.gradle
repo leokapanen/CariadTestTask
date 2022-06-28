@@ -21,6 +21,8 @@ android {
 
         buildConfigField("String", "BASE_API_URL", "\"https://api.openchargemap.io/\"")
         buildConfigField("String", "API_KEY", "\"1e2cb9c6-a0e9-4a68-bc09-f3c97a6bd8e4\"")
+        buildConfigField("double", "INITIAL_LATITUDE", "52.526")
+        buildConfigField("double", "INITIAL_LONGITUDE", "13.415")
     }
 
     buildTypes {
@@ -58,13 +60,10 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
     implementation "com.google.code.gson:gson:$gsonVersion"
-    implementation "androidx.room:room-runtime:$roomVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofit2Version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2Version"
     implementation "com.jakewharton.timber:timber:$timberVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
-    implementation "com.facebook.fresco:fresco:$frescoVersion"
+    implementation "org.osmdroid:osmdroid-android:$osmVersion"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"

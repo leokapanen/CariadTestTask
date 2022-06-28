@@ -9,13 +9,18 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.kapanen.cariadtesttask.BuildConfig
 import com.kapanen.cariadtesttask.R
 import com.kapanen.cariadtesttask.databinding.FragmentMapBinding
 import com.kapanen.cariadtesttask.model.Poi
 import com.kapanen.cariadtesttask.model.isActive
 import dagger.hilt.android.AndroidEntryPoint
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.util.GeoPoint
 import timber.log.Timber
 import java.util.*
+
+private const val DEFAULT_ZOOM_LEVEL = 10.0
 
 @AndroidEntryPoint
 class MapFragment : Fragment() {
@@ -64,17 +69,30 @@ class MapFragment : Fragment() {
             hideDetails()
         }
 
+        binding.mapview.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+        binding.mapview.setTileSource(TileSourceFactory.MAPNIK)
+        binding.mapview.setMultiTouchControls(true)
+        binding.mapview.controller.setCenter(
+            GeoPoint(
+                BuildConfig.INITIAL_LATITUDE,
+                BuildConfig.INITIAL_LONGITUDE
+            )
+        )
+        binding.mapview.controller.setZoom(DEFAULT_ZOOM_LEVEL)
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
         mapViewModel.enableLiveUpdate()
+        binding.mapview.onResume()
     }
 
     override fun onPause() {
         super.onPause()
         mapViewModel.disableLiveUpdate()
+        binding.mapview.onPause()
     }
 
     override fun onDestroyView() {
@@ -89,7 +107,8 @@ class MapFragment : Fragment() {
             detailsInactiveIcon.isVisible = !poi.isActive()
 
             detailsConnectionTypesValue.text =
-                poi.connections.toSet().joinToString(separator = connectionTypesSeparator) { it.connectionType.title }
+                poi.connections.toSet()
+                    .joinToString(separator = connectionTypesSeparator) { it.connectionType.title }
 
             detailsAddressValue.text =
                 listOf(

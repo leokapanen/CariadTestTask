@@ -32,11 +32,10 @@ project.ext {
     kotlinReflectVersion = '1.6.10'
     retrofit2Version = '2.9.0'
     viewpager2Version = '1.0.0'
-    frescoVersion = '2.6.0'
+    osmVersion = '6.1.0'
 
     okHttpVersion = '4.9.3'
     gsonVersion = '2.9.0'
-    roomVersion = '2.4.2'
     timberVersion = '5.0.1'
     multidexVersion = '2.0.1'
 
