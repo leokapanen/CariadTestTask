@@ -14,4 +14,7 @@
     <string name="filter_header_active">Availability</string>
     <string name="filter_active">Show active POIs</string>
     <string name="filter_inactive">Show inactive POIs</string>
+
+    <string name="general_error_msg">Error!</string>
+    <string name="error_msg_format">Error: %s</string>
 </resources>

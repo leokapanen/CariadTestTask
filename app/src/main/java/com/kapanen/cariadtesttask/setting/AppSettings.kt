@@ -20,4 +20,5 @@ open class AppSettings constructor(storage: Storage) : StoragePropertyDelegate(s
     fun notifyFilteringUpdate() {
         _filteringUpdates.postValue(System.currentTimeMillis())
     }
+
 }

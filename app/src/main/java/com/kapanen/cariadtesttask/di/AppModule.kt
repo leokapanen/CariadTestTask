@@ -6,6 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.kapanen.cariadtesttask.BuildConfig
+import com.kapanen.cariadtesttask.api.PoiApiService
+import com.kapanen.cariadtesttask.data.DefaultPoiRemoteDataSource
+import com.kapanen.cariadtesttask.data.DefaultPoiRepository
+import com.kapanen.cariadtesttask.data.PoiRemoteDataSource
+import com.kapanen.cariadtesttask.data.PoiRepository
 import com.kapanen.cariadtesttask.delegate.AdapterDelegatesManager
 import com.kapanen.cariadtesttask.delegate.DefaultDelegatesManager
 import com.kapanen.cariadtesttask.delegate.RecyclerViewAdapterDelegate
@@ -14,6 +19,7 @@ import com.kapanen.cariadtesttask.setting.SharedPreferencesStorage
 import com.kapanen.cariadtesttask.setting.Storage
 import com.kapanen.cariadtesttask.ui.filtering.delegate.FilteringHeaderDelegate
 import com.kapanen.cariadtesttask.ui.filtering.delegate.FilteringItemDelegate
+import com.kapanen.cariadtesttask.util.withTrailingSlash
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,8 +28,11 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import okhttp3.Cache
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 import java.io.File
 import javax.inject.Qualifier
@@ -40,6 +49,10 @@ object AppModule {
     @Qualifier
     @Retention(AnnotationRetention.RUNTIME)
     annotation class BaseApiUrl
+
+    @Qualifier
+    @Retention(AnnotationRetention.RUNTIME)
+    annotation class RemoteDataSource
 
     @Singleton
     @Provides
@@ -104,6 +117,39 @@ object AppModule {
             .cache(cache)
             .build()
     }
+
+    @Provides
+    fun providePoiApiService(
+        okHttpClient: OkHttpClient,
+        @BaseApiUrl baseUrl: String
+    ): PoiApiService {
+        return Retrofit.Builder()
+            .baseUrl(baseUrl.withTrailingSlash())
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(PoiApiService::class.java)
+    }
+
+    @Singleton
+    @RemoteDataSource
+    @Provides
+    fun provideCardsRemoteDataSource(
+        poiApiService: PoiApiService
+    ): PoiRemoteDataSource = DefaultPoiRemoteDataSource(poiApiService)
+
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+object RepositoryModule {
+
+    @Singleton
+    @Provides
+    fun providePoiRepository(
+        @AppModule.RemoteDataSource remoteCardsDataSource: PoiRemoteDataSource,
+        ioDispatcher: CoroutineDispatcher
+    ): PoiRepository = DefaultPoiRepository(remoteCardsDataSource, ioDispatcher)
 
 }
 

@@ -20,6 +20,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "BASE_API_URL", "\"https://api.openchargemap.io/\"")
+        buildConfigField("String", "API_KEY", "\"1e2cb9c6-a0e9-4a68-bc09-f3c97a6bd8e4\"")
     }
 
     buildTypes {
