@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import com.kapanen.cariadtesttask.data.PoiRepository
 import com.kapanen.cariadtesttask.model.Poi
+import com.kapanen.cariadtesttask.model.isActive
 import com.kapanen.cariadtesttask.setting.AppSettings
 import com.kapanen.cariadtesttask.util.toItemsString
 import com.kapanen.cariadtesttask.util.toStringSet
@@ -32,7 +33,7 @@ class MapViewModel @Inject constructor(
 
         val filters = appSettings.connectionTypeFilters.toStringSet()
         pois.filter { poi ->
-            val isAvailable = poi.statusType.IsOperational && poi.statusType.IsUserSelectable
+            val isAvailable = poi.isActive()
             val showAvailableItem = appSettings.isFilterActiveEnabled && isAvailable
             val showInavailableItem = appSettings.isFilterInactiveEnabled && !isAvailable
             poi.connections.firstOrNull { filters.contains(it.connectionType.title) } != null

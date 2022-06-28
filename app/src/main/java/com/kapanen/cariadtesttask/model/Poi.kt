@@ -8,3 +8,5 @@ data class Poi(
     @SerializedName("StatusType") val statusType: StatusType,
     @SerializedName("NumberOfPoints") val numberOfPoints: Int
 )
+
+fun Poi.isActive() = statusType.IsUserSelectable && statusType.IsUserSelectable

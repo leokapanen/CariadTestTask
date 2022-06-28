@@ -17,4 +17,7 @@
 
     <string name="general_error_msg">Error!</string>
     <string name="error_msg_format">Error: %s</string>
+
+    <string name="connection_types_separator">,&#160;</string>
+    <string name="address_separator">,&#160;</string>
 </resources>

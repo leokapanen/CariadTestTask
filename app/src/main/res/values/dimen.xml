@@ -6,7 +6,7 @@
     <dimen name="details_title_text_size">16sp</dimen>
     <dimen name="details_text_text_size">12sp</dimen>
     <dimen name="details_points_text_size">14sp</dimen>
-    <dimen name="details_text_vertical_spacing">6dp</dimen>
+    <dimen name="details_text_vertical_spacing">8dp</dimen>
     <dimen name="details_text_value_horizontal_spacing">12dp</dimen>
     <dimen name="details_card_padding">16dp</dimen>
     <dimen name="details_card_horizontal_margin">16dp</dimen>
