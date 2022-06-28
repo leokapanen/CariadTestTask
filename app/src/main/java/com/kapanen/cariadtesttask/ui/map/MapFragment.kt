@@ -25,7 +25,6 @@ import org.osmdroid.views.overlay.ItemizedOverlay
 import org.osmdroid.views.overlay.OverlayItem
 import java.util.*
 
-
 private const val DEFAULT_ZOOM_LEVEL = 7.0
 private const val DEFAULT_ZOOM_LEVEL_ON_TAP = 19.0
 
@@ -127,6 +126,7 @@ class MapFragment : Fragment() {
 
     private fun hideDetails() {
         binding.detailsCard.isVisible = false
+        binding.mapview.controller.setZoom(DEFAULT_ZOOM_LEVEL)
     }
 
     private fun MapView.addPin(poi: Poi) {
